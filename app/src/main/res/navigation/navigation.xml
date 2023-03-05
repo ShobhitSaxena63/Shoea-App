@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/productListing"
+        android:name="com.example.shoea.ui.ProductListing"
+        android:label="fragment_product_listing"
+        tools:layout="@layout/fragment_product_listing" >
+        <action
+            android:id="@+id/action_productListing_to_productDetail"
+            app:destination="@id/productDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetail"
+        android:name="com.example.shoea.ui.ProductDetail"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_productDetail_to_productListing"
+            app:destination="@id/productListing"
+            app:popUpTo="@id/productListing"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.shoea.ui.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_productListing"
+            app:destination="@id/productListing"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
