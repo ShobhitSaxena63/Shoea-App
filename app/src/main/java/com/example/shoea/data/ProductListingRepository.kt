@@ -20,9 +20,7 @@ class ProductListingRepository(context:Application){
     //    region Error Handling
     suspend fun fetchFromNetwork() =
         try{
-            Timber.d("Getting Product repository called")
             val result = productService.getProducts()
-            Timber.d("Getting Product repository calling fetchFromNetwork()")
             Timber.d("Getting Product repository $result ")
             if(result.isSuccessful) {
                 val productList = result.body()

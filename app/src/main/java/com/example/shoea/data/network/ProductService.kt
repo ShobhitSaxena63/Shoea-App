@@ -28,7 +28,6 @@ interface ProductService {
         }
 
         fun getInstance():ProductService{
-            Timber.d("Getting Product ProductService calling getInstance() ")
             return retrofitService
         }
     }

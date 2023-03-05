@@ -27,7 +27,6 @@ class SplashScreen : Fragment() {
 
         // Delay navigation to the next fragment by 3 seconds
         Handler(Looper.getMainLooper()).postDelayed({
-//            val action = SplashScreenFragmentDirections.actionSplashScreenFragmentToNextFragment()
             findNavController().navigate(SplashScreenDirections.actionSplashScreenToProductListing())
         }, 2500)
     }

@@ -27,7 +27,6 @@ class ProductDetail : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.d("FragmentLifeCycle onCreate()")
         val id = ProductDetailArgs.fromBundle(requireArguments()).id
         val viewModelFactory = ProductDetailViewModelFactory(id,1,requireActivity().application)
         viewModel = ViewModelProvider(this,viewModelFactory)[ProductDetailViewModel::class.java]
@@ -79,19 +78,6 @@ class ProductDetail : Fragment() {
 
     }
 
-//    private fun autoScroll() {
-//        val handler = Handler(Looper.getMainLooper())
-//
-//        val runnable = object : Runnable {
-//            override fun run() {
-//                // Do your work here
-//                Timber.d("Adapter Position for product Images ${binding.productImagesVp.currentItem}")
-//                // Schedule the next execution of the runnable
-//                handler.postDelayed(this, 3000)
-//            }
-//        }
-//    }
-
 
     private fun quantity(price: Int) {
         val stepperTouch = binding.stepperTouch
@@ -102,18 +88,15 @@ class ProductDetail : Fragment() {
         stepperTouch.count = viewModel.getQty()
         // Set price textview and handle config changes
         binding.price.text = getString(R.string.price,(viewModel.getQty() * price).toString() )
-        Timber.d("Updating Price Value Get = ${viewModel.getQty()}")
         stepperTouch.sideTapEnabled = true
         stepperTouch.addStepCallback(object : OnStepCallback {
             override fun onStep(value: Int, positive: Boolean) {
-                Timber.d("Counter quantity $value | Count = ${ binding.stepperTouch.count}")
                 if(value == stepperTouch.maxValue){
                     Snackbar.make(binding.root,"Max Quantity Reached",Snackbar.LENGTH_SHORT).show()
                 }
                 //First set value in viewModel
                 viewModel.setQty(value)
                 binding.price.text = getString(R.string.price,(value * price).toString() )
-                Timber.d("Quantity value = $value | Set = $value")
             }
         })
 
@@ -159,21 +142,6 @@ class ProductDetail : Fragment() {
         Timber.d("Fragment Lifecycle Details OnPause()")
         stopAutoScroll()
         viewModel.setCurrentItem(binding.productImagesVp.currentItem)
-
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.d("Fragment Lifecycle Details onDestroy()")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.d("Fragment Lifecycle Details onDestroyView()")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Timber.d("Fragment Lifecycle Details onDetach()")
 
     }
 

@@ -26,7 +26,6 @@ import timber.log.Timber
 class ProductListing : Fragment() {
     private lateinit var _binding:FragmentProductListingBinding
     private val binding get() = _binding
-//    private lateinit var viewModel: ProductListingViewModel
     private val viewModel: ProductListingViewModel by lazy {
         ViewModelProvider(this)[ProductListingViewModel::class.java]
     }
@@ -67,21 +66,9 @@ class ProductListing : Fragment() {
         binding.productsRv.adapter = ProductListAdapter{
             findNavController().navigate(ProductListingDirections.actionProductListingToProductDetail(it))
         }
+
         loadData()
-//        showMessageIfNetworkUnavailable()
-//        Timber.d("Getting Product onViewCreated ")
-//        viewModel.products.observe(viewLifecycleOwner){ productList->
-//
-//            if(productList.isEmpty()){
-//                Timber.d("Getting Product onViewCreated  calling fetchFromNetwork() ")
-//                viewModel.fetchFromNetwork()
-//            }
-//            Timber.d("Getting Product onViewCreated  calling fetchFromNetwork() ")
-//
-//            productList?.let {
-//                (binding.productsRv.adapter as ProductListAdapter).submitList(productList)
-//            }
-//        }
+
 
 
         viewModel.loadingStatus.observe(viewLifecycleOwner){ loadingStatus->
@@ -166,15 +153,6 @@ class ProductListing : Fragment() {
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.d("Fragment Lifecycle List onDestroy()")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.d("Fragment Lifecycle List onDestroyView()")
-    }
 
     override fun onDetach() {
         super.onDetach()

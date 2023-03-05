@@ -28,8 +28,6 @@ class ProductListingViewModel(application: Application) : AndroidViewModel(appli
         _loadingStatus.value = LoadingStatus.loading()
         viewModelScope.launch {
             _loadingStatus.value = withContext(Dispatchers.IO){
-//                delay(5000)
-                Timber.d("Getting Product viewModel  calling fetchFromNetwork() ")
                 repo.fetchFromNetwork()
             }
         }
