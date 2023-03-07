@@ -12,7 +12,6 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -115,30 +114,36 @@ class ProductListing : Fragment() {
                     if (currentFragmentId == R.id.productDetail) {
                         findNavController().navigate(R.id.action_productDetail_to_productListing)
                     }
+                    showNoInternetDialog()
                 }
-                val dialogBuilder = AlertDialog.Builder(requireContext())
-                dialogBuilder.setMessage("Please turn on you internet connection")
-                    .setCancelable(false)
-                    .setPositiveButton("OK") { _, _ -> }
-                val alert = dialogBuilder.create()
-                alert.setTitle("No Internet Connection")
-                alert.show()
+
             }
         }
+    }
+    private fun showNoInternetDialog() {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setMessage("Please turn on your internet connection")
+            .setCancelable(false)
+            .setPositiveButton("OK") { _, _ -> }
+        val alert = dialogBuilder.create()
+        alert.setTitle("No Internet Connection")
+        alert.show()
     }
 
     private fun loadData(){
         Timber.d("Getting Product onViewCreated ")
-        viewModel.products.observe(viewLifecycleOwner){ productList->
+        view?.let{
+            viewModel.products.observe(viewLifecycleOwner){ productList->
 
-            if(productList.isEmpty()){
+                if(productList.isEmpty()){
+                    Timber.d("Getting Product onViewCreated  calling fetchFromNetwork() ")
+                    viewModel.fetchFromNetwork()
+                }
                 Timber.d("Getting Product onViewCreated  calling fetchFromNetwork() ")
-                viewModel.fetchFromNetwork()
-            }
-            Timber.d("Getting Product onViewCreated  calling fetchFromNetwork() ")
 
-            productList?.let {
-                (binding.productsRv.adapter as ProductListAdapter).submitList(productList)
+                productList?.let {
+                    (binding.productsRv.adapter as ProductListAdapter).submitList(productList)
+                }
             }
         }
     }
