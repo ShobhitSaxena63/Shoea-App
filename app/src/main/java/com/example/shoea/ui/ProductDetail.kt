@@ -50,8 +50,9 @@ class ProductDetail : Fragment() {
         viewModel.products.observe(viewLifecycleOwner){ product->
             product?.let {
                 setData(product)
+                quantity(product.price)
             }
-            quantity(product.price)
+
         }
 
 
@@ -137,12 +138,22 @@ class ProductDetail : Fragment() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        Timber.d("Fragment Lifecycle Details OnPause()")
-        stopAutoScroll()
-        viewModel.setCurrentItem(binding.productImagesVp.currentItem)
+        override fun onPause() {
+            super.onPause()
+            Timber.d("Fragment Lifecycle Details OnPause()")
+            stopAutoScroll()
+            viewModel.setCurrentItem(binding.productImagesVp.currentItem)
 
+        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.d("Fragment Lifecycle Details OnPause()")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Timber.d("Fragment Lifecycle Details OnPause()")
     }
 
 }

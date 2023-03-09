@@ -16,7 +16,6 @@ class ProductListingRepository(context:Application){
         return productListingDao.getProducts()
     }
 
-
     //    region Error Handling
     suspend fun fetchFromNetwork() =
         try{

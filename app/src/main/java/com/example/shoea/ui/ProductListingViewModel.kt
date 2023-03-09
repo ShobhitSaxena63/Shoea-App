@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
+
 
 class ProductListingViewModel(application: Application) : AndroidViewModel(application) {
     private val repo:ProductListingRepository = ProductListingRepository(application)
@@ -39,5 +39,10 @@ class ProductListingViewModel(application: Application) : AndroidViewModel(appli
         }
         fetchFromNetwork()
     }
+//    fun deleteData(){
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repo.deleteAllData()
+//        }
+//    }
 
 }

@@ -12,15 +12,17 @@
     <dimen name="_32dp">32dp</dimen>
     <dimen name="_40dp">40dp</dimen>
     <dimen name="_120dp">120dp</dimen>
+    <dimen name="_140dp">140dp</dimen>
     <dimen name="viewpager_height">300dp</dimen>
 
 
 
-    <!--    SP-->
+<!--        SP-->
     <dimen name="_14sp">14sp</dimen>
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_18sp">18sp</dimen>
     <dimen name="_20sp">20sp</dimen>
     <dimen name="_22sp">22sp</dimen>
     <dimen name="_26sp">26sp</dimen>
+
 </resources>
