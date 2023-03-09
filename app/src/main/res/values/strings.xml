@@ -16,4 +16,5 @@
     <string name="in_stock">In Stock</string>
     <string name="quantity">Quantity</string>
     <string name="price_label">Price</string>
+    <string name="product_image_cd">Product Image</string>
 </resources>
