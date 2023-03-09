@@ -2,7 +2,7 @@
 <h1>Description</h1>
 <p>The Shoea App is a simple Android application that displays a list of products. It fetches data from a RESTful API and displays it in a RecyclerView, allowing users to scroll through the list and view the details of each product. The app also includes a swipe-to-refresh feature, allowing users to refresh the product list and view the latest data. The app has been implemented using modern Android development practices, including the use of Kotlin and the MVVM architecture pattern.</p>
 <h3>Tech Used:</h3>
-<p>Android Studio, Kotlin, XML, Navigation graph, MVVM, Room, Retrofit, LiveData, Swipe Refresh Layout, Glide, Stepper-Touch, CircleIndicator </p>
+<p>Android Studio, Kotlin, XML, Navigation graph, MVVM, Room, Retrofit, LiveData, Swipe Refresh Layout, Glide, Stepper-Touch, CircleIndicator etc.</p>
 <h3>Screenshots:</h3>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/100696254/222987216-8bd19b64-073d-47a9-9276-d92100d55a5b.png" width="250">
@@ -37,7 +37,7 @@
 </ul>
 
 <h1>App Link</h1>
-<a href="https://drive.google.com/file/d/1spwQbQ2VcJDWECH2xQVw4iba_JmwEbNz/view?usp=share_link">Shoea.apk</a>
+<a href="https://drive.google.com/file/d/1k-l30Zr88asf91tXdygsPGNPH7mJXDAM/view?usp=share_link">Shoea.apk</a>
 
 <h3>Video:</h3>
 
